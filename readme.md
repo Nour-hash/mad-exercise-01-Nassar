@@ -12,6 +12,16 @@
 <span style="color:blue">Provide your answer here! </span>
 > Note: you can also use code snippets to illustrate your answer. 
 
+Non-Null Types: All types in Kotlin are defined to be non-nullable, meaning a null value cannot be assigned to it. 
+For example, if one tries to assign or return null for a non-nullable type, it shall throw a compilation error.
+```kotlin
+val a: String = "Hello" // non-null type
+// a = null // Compilation error
+```
+
+Nullable Types: If there is a possibility that a variable can store a null value, it must be explicitly declared using an appendix of a question mark (?) at the type. 
+This causes Kotlin to check for null before using the variable; thus, it prevents NPE at runtime.
+
 ```kotlin 
 // example code snippet
 val a: String = "value" // non-null type
@@ -20,6 +30,29 @@ val a: String = "value" // non-null type
 ### What are lambda expressions and higher order functions in Kotlin? Why would you store a function inside a variable? (0,5 points)
 
 <span style="color:blue">Provide your answer here!</span>
+
+Lambda Expressions: Lambda expressions are a concise way of representing functions that can be passed around as values. 
+Lambda expressions are defined using curly braces { } and can have optional parameters (defined before ->) and a body (after ->). 
+They are particularly useful for creating quick implementations of interfaces with a single method (functional interfaces) and for passing logic as arguments to higher-order functions.
+
+```kotlin 
+val sum = { x: Int, y: Int -> x + y }
+println(sum(1, 2)) // Outputs 3
+```
+
+Higher Order Functions: These are functions that can accept functions as arguments and/or produce functions as output. 
+They are a powerful concept that allows for more abstract and concise code, especially for operations that require transformations, filters, or other operations on collections.
+
+```kotlin
+fun operateOnTwoNumbers(x: Int, y: Int, operation: (Int, Int) -> Int): Int = operation(x, y)
+val result = operateOnTwoNumbers(5, 3, sum) // Using the sum lambda as an argument
+```
+
+Storing a function in a variable is useful for several reasons:
+
+- **Reusability:** You can define a piece of logic once and reuse it in multiple places.
+- **Flexibility:** Storing the functions in variables makes it possible to be able to pass them as arguments to other functions, hence allowing for dynamic behavior based on the functions passed.
+- **Abstraction:** It allows for higher levels of abstraction, making your code more readable and maintainable by encapsulating operations as functions that can be passed around.
 
 ### Provide a solution for the following number guessing game inside `App.kt`. (3 points)
 
